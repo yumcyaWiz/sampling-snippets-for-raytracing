@@ -32,4 +32,17 @@ inline Vec3 sampleHemisphere(float u, float v, float R, float& pdf) {
               R * std::sin(phi) * std::sin(theta));
 }
 
+// sample points on hemisphere propotional to cosine theta
+inline Vec3 sampleCosineHemisphere(float u, float v, float R, float& pdf) {
+  const float theta = 0.5f * std::acos(std::max(1.0f - 2.0f * u, 0.0f));
+  const float phi = 2.0f * PI * v;
+
+  float sinTheta = std::sin(theta);
+  float cosTheta = std::cos(theta);
+  pdf = 1.0f / (PI * R * R) * cosTheta;
+
+  return Vec3(R * std::cos(phi) * sinTheta, R * cosTheta,
+              R * std::sin(phi) * sinTheta);
+}
+
 #endif
