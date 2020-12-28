@@ -8,7 +8,7 @@ Rest of codes are for testing and visualization.
 
 ## Requirements
 
-* C++11
+* C++17
 * CMake 3.12 or Higher
 
 ## Build
